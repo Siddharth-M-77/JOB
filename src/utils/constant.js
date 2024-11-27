@@ -1,4 +1,4 @@
-const BASE_API_URL = "https://job-portal-backend-af56.onrender.com/api/v1";
+const BASE_API_URL = "http://localhost:8000/api/v1";
 
 // Define each endpoint based on the base URL
 export const USER_API_END_POINT = `${BASE_API_URL}/user`;

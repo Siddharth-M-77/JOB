@@ -17,10 +17,10 @@ import { USER_API_END_POINT } from "@/utils/constant";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
-  
+
   // Only access role if the user is not null
   const role = user ? (user.role === "recruiter" ? "/admin/job" : "/job") : "/";
-  
+
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Navbar = () => {
       // Check if the response is successful
       if (response.data.success) {
         toast.success("Logged out successfully!");
-      
+
         dispatch(setUser(null)); // Reset the user in Redux state
         navigate("/login"); // Redirect to login page
       }
@@ -59,14 +59,15 @@ const Navbar = () => {
           {/* Menu for larger screens */}
           <div className="hidden md:flex space-x-8 items-center">
             {/* Only show Home if the user is not a recruiter */}
-            {user && user.role !== "recruiter" && (
+            {user && (
               <Link
-                to="/"
+                to={user.role === "recruiter" ? "/admin/companies" : "/"}
                 className="text-gray-800 hover:text-rose-700 font-medium"
               >
-                Home
+                {user.role === "recruiter" ? "Companies" : "Home"}
               </Link>
             )}
+
             <Link
               to={role}
               className="text-gray-800 hover:text-rose-700 font-medium"

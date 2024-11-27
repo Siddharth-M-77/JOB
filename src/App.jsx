@@ -18,12 +18,15 @@ import AllAdminJob from "./components/admin/allAdminJob";
 import AdminJobDescription from "./components/admin/AdminJobDescription";
 import CompanyUpdate from "./components/admin/CompanyUpdate"
 import Applicants from "./components/admin/Applicants";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const {user} = useSelector(store=>store.user)
   return (
     <Router>
       <Navbar />
       <Routes>
+      
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<RegisterPage />} />

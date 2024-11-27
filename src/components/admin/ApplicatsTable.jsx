@@ -22,10 +22,16 @@ const ApplicantsTable = () => {
   // Function to handle status update
   const handleStatusUpdate = async (applicantId, status) => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.put(
         `${APPLICATION_API_END_POINT}/status/${applicantId}/update`, // Change to use applicantId
         { status }, // Send only the status in the body
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       if (response.data.success) {

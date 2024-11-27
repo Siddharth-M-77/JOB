@@ -32,7 +32,7 @@ const LoginPage = () => {
           password: data.password,
         },
         {
-          withCredentials: true, // Include credentials (like cookies)
+          withCredentials: true,
         }
       );
 
